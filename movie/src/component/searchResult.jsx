@@ -5,7 +5,7 @@ function SearchResult(props) {
         <h2>Kết quả tìm kiếm</h2>
         <div className="boxResult row">
           {props.result.length === 0 ? (
-            <h2>🎯 Kết quả bạn cần hiện chưa có !!!</h2>
+            <h3>🎯 Kết quả bạn cần hiện chưa có !!!</h3>
           ) : (
             props.result.map((item) => (
               <div key={item.id} className="card col-md-4">

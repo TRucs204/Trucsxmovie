@@ -1,8 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  background-color: black;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 html {
   behavior: smooth;
+}
+.body {
+  background-color: #000000;
 }
 header {
   background-color: black;
@@ -10,6 +18,7 @@ header {
   height: 100px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 nav {
   display: flex;
@@ -22,25 +31,32 @@ h1 {
 h2 {
   color: #fff;
 }
-span {
+.header-left span {
   color: orange;
+}
+.navBar span {
+  color: #d3a1ff;
+  text-decoration: none;
 }
 
 .header-left ul {
   display: flex;
 }
 
-.header-left ul a {
+.header-left ul li {
   color: #fff;
   text-decoration: none;
+  font-weight: 800;
 }
 .header-left ul li {
   margin-left: 40px;
   font-size: 18px;
-
+  cursor: pointer;
   list-style-type: none;
 }
-
+#barscolor {
+  color: #fff !important;
+}
 .fa-bars {
   color: #fff;
   display: none;
@@ -60,11 +76,63 @@ span {
   position: relative;
 }
 .cardtoprate {
-  margin-top: 50px;
 }
+
 .cardtoprate img {
   position: relative;
+  width: 502px;
+  height: 283px;
 }
+.iconMovie {
+  position: absolute;
+  top: 5px;
+  right: 120px;
+  color: rgb(81, 255, 0);
+  font-size: 40px;
+  z-index: 3;
+  cursor: pointer;
+}
+.drop-iconMovie {
+  background-color: #f3f2f2;
+  position: absolute;
+  top: 60px;
+  right: 120px;
+  z-index: 3;
+  padding: 5px 7px;
+  visibility: hidden;
+  cursor: pointer;
+}
+.drop-iconMovie-true {
+  visibility: visible;
+}
+.drop-iconMovie-false {
+  visibility: hidden;
+}
+.drop-iconMovie li {
+  list-style-type: none;
+}
+
+/* popula drop*/
+.iconMoviePopula {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: rgb(81, 255, 0);
+  font-size: 40px;
+  z-index: 3;
+  cursor: pointer;
+}
+.drop-iconMovie-popula {
+  background-color: #f3f2f2;
+  position: absolute;
+  top: 55px;
+  right: 10px;
+  z-index: 3;
+  padding: 5px 7px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
 .card h5 {
   position: absolute;
   bottom: 20px;
@@ -87,30 +155,9 @@ span {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-}
-.opacity {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  background-size: cover;
-  z-index: 2;
-  opacity: 0.3;
+  position: relative;
 }
 
-.opacitytoprate {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  background-size: cover;
-  z-index: 2;
-  opacity: 0.3;
-}
 .main {
   width: 100%;
   height: auto;
@@ -121,6 +168,7 @@ span {
 h2 {
   margin-top: 50px;
   margin-left: 50px;
+  margin-bottom: 50px;
 }
 
 .page {
@@ -144,12 +192,403 @@ h2 {
 .result h5 {
   color: #fff;
 }
-.boxResult h2 {
+.boxResult h3 {
   font-size: 2rem;
   margin-top: 70px;
   text-align: center;
   color: rgb(208, 255, 0);
 }
+
+#root {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.intro {
+  width: 100%;
+  color: #000000;
+  background-color: #f3f2f2;
+  height: 100vh;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s linear;
+}
+.crossbar {
+  width: 15%;
+  height: 2%;
+  background-color: #7c7c7c;
+  position: absolute;
+  bottom: 40px;
+  left: 42%;
+  border-radius: 20px;
+}
+.intro h1 {
+  color: #000000;
+  font-size: 38px;
+  text-shadow: 0 0 50px;
+}
+.intro img {
+  position: absolute;
+  top: 10%;
+  left: 44%;
+  width: 10%;
+  animation: spiner 3s linear infinite;
+}
+.user-name {
+  color: #59f07a !important;
+}
+
+@keyframes spiner {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.intro span:nth-child(2) {
+  color: aqua;
+}
+.intro h1 span:nth-child(3) {
+  color: orange;
+}
+
+.closeIntro {
+  transform: translateY(-100%);
+}
+label {
+  color: red;
+}
+.Login {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Login::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100vh;
+  background-color: #44f6fc;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+.Login::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100vh;
+  background-color: #aeecbd;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transform: translateX(50%);
+}
+#Login {
+  margin: 0 auto;
+  width: 40%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  gap: 10%;
+  z-index: 2;
+}
+#Login input {
+  width: 300px;
+  border-radius: 10px;
+  padding: 0 10%;
+}
+#Login .titleLogin {
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-weight: 900;
+}
+#Login .btn-Form {
+  display: flex;
+  width: auto;
+  height: auto;
+  gap: 20px;
+}
+#Login .btn-Form button {
+  text-align: center;
+  width: auto;
+  height: 40px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background-color: #4caeff;
+  position: relative;
+  border: 1px solid rgb(153, 153, 153);
+  transition: all 0.5s ease-in-out;
+}
+
+#Login .btn-Form button:hover {
+  translate: 0 -15px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.5);
+}
+
+#Login .btn-Form button span {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* đăng ký */
+.Signin {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.Signin::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100vh;
+  background-color: #44f6fc;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+.Signin::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 100vh;
+  background-color: #aeecbd;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transform: translateX(50%);
+}
+#Signin {
+  margin: 0 auto;
+  width: 40%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 30px;
+  gap: 10%;
+  z-index: 2;
+}
+#Signin input {
+  width: 300px;
+  border-radius: 10px;
+  padding: 0 10%;
+}
+.titleLogin {
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-weight: 900;
+}
+.btn-Form {
+  display: flex;
+  gap: 20px;
+}
+#Signin .btn-Form button {
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  /* padding: 0 5px; */
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  border: 1px solid rgb(153, 153, 153);
+  overflow: hidden;
+}
+#Signin .btn-Form button::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 0%;
+  height: 100%;
+  z-index: 1;
+  background-color: #1893f8;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+}
+#Signin .btn-Form button span {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+}
+#Signin .btn-Form button:hover {
+  color: #fff;
+}
+#Signin .btn-Form button:hover::before {
+  left: 0;
+  width: 100%;
+}
+
+.modal-message {
+  position: fixed; /* Thay vì absolute để modal luôn ở góc phải */
+  top: 20px;
+  right: 20px;
+  width: 260px;
+  height: 60px;
+  background-color: #ffffff;
+  transition: transform 0.3s ease-in-out; /* Mượt hơn */
+  z-index: 1000; /* Đảm bảo hiển thị trên các phần khác */
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px; /* Fix lỗi border */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng bóng */
+}
+.open-modal {
+  transform: translateX(0);
+}
+.closeModal {
+  transform: translateX(115%);
+}
+.modal-message span {
+  font-weight: 500;
+  font-size: 17px;
+}
+.boder {
+  border: 1px solid rgb(36, 255, 47);
+}
+.boderErr {
+  border: 1px solid rgb(255, 0, 0);
+}
+.fa-xmark {
+  color: red !important;
+  font-size: 30px !important;
+  margin-top: -3px !important;
+}
+.fa-check {
+  color: rgb(106, 255, 60) !important;
+  font-size: 30px !important;
+}
+
+/* profile */
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #7f9bbf;
+}
+.profile p {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  font-size: 38px;
+  font-weight: 800;
+  color: #1893f8;
+  cursor: pointer;
+}
+
+/* Sidebar chứa thông tin cá nhân */
+.box-user-left {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+}
+
+/* Tiêu đề */
+.box-user-left h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* Danh sách thông tin cá nhân */
+.box-user-left dl {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Định dạng label (dt) */
+.box-user-left dt {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Nội dung thông tin (dd) */
+.box-user-left dd {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Phần nội dung chính của Profile */
+.lastWatch {
+  flex-grow: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+}
+.box-lastWatch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.remove {
+  position: absolute;
+  width: 50%;
+  height: 30px;
+  background-color: #59f07a;
+  top: 0;
+  left: 25%;
+  z-index: 3;
+  border-radius: 10px;
+}
+.display-email {
+  font-size: 25px;
+  font-weight: 500;
+  color: #18dbe9;
+}
+.titleLastWatch {
+  color: #007bff;
+}
+
+li {
+  user-select: none;
+}
+
 @media (max-width: 700px) {
   header {
     display: flex;
@@ -190,7 +629,7 @@ h2 {
     display: block;
   }
   .open {
-    transform: translatey(10%);
+    transform: translatey(5%);
   }
   .btn-outline-secondary {
     z-index: 1 !important;
@@ -210,9 +649,13 @@ h2 {
   .carousel-inner img {
     width: 100% !important;
   }
+  .carousel {
+    background-color: #000000;
+  }
   .card {
     width: 40%;
     height: 200px;
+    position: relative;
   }
   .card h5 {
     font-size: 0.8rem;
@@ -221,9 +664,78 @@ h2 {
   .main {
     padding: 0;
   }
-  .boxResult h2 {
+  .boxResult h3 {
     font-size: 1.2rem;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+  }
+  .intro h1 {
+    color: #000000;
+    font-size: 1.7rem;
+  }
+  .intro img {
+    position: absolute;
+    top: 10%;
+    left: 36%;
+    width: 130px;
+  }
+  .btn-Form a {
+    font-size: 0.7rem;
+  }
+  Form {
+    transform: translateY(-15%);
+  }
+  .modal-message {
+    width: 210px;
+  }
+  .modal-message span {
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  .iconMovie {
+    position: absolute;
+    top: -5px;
+    right: 25px;
+    color: rgb(0, 255, 64);
+    font-size: 45px;
+    z-index: 3;
+  }
+  .drop-iconMovie {
+    background-color: #f3f2f2;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    z-index: 3;
+    padding: 5px 7px;
+    cursor: pointer;
+  }
+  .drop-iconMovie-popula {
+    background-color: #f3f2f2;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 55px;
+    right: 10px;
+    z-index: 3;
+    padding: 5px 7px;
+    cursor: pointer;
+    list-style-type: none;
+  }
+  .drop-iconMovie {
+    font-size: 0.9rem;
+  }
+  /* profile */
+  .profile {
+    align-items: center;
+  }
+
+  .box-user-left {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .box-user-left dl {
+    text-align: left;
   }
 }

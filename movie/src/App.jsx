@@ -6,6 +6,9 @@ import Header from "./component/header";
 import Banner from "./component/banner";
 import MovieList from "./component/movieList";
 import SearchResult from "./component/searchResult";
+import plower from "./assets/pngegg-min.png";
+import Modal from "./component/ModalMessage";
+import { CheckProvider } from "./component/checkUser";
 
 export const themeContext = createContext();
 function App() {
@@ -16,6 +19,7 @@ function App() {
   const [valueInput, setValueInput] = useState("");
   const [result, setResult] = useState([]);
   const [statusResult, setStatusResult] = useState(false);
+  const [intro, setIntro] = useState(false);
   useEffect(() => {
     // get api top_rate
     const dataTop_rate = fetch(
@@ -60,25 +64,46 @@ function App() {
   }
 
   function handleSearch() {
-    const dataTitle = [...data.datapopular, ...data.datatoprate];
-    let resultSearch = dataTitle.filter((item) =>
-      item.title.toLowerCase().includes(valueInput.toLowerCase())
-    );
-    setResult(resultSearch);
-    setStatusResult(true);
+    if (valueInput !== "") {
+      const dataTitle = [...data.datapopular, ...data.datatoprate];
+      let resultSearch = dataTitle.filter((item) =>
+        item.title.toLowerCase().includes(valueInput.toLowerCase())
+      );
+      setResult(resultSearch);
+      setStatusResult(true);
+    }
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIntro(true);
+    }, 2500);
+  }, []);
   return (
     <>
+      <div className={`intro ${intro ? "closeIntro" : ""}`}>
+        <Modal />
+        <img src={plower} alt="" />
+        <h1>
+          Chào mừng đến với <br />
+          <span>TRUCSX </span>
+          <span>MOVIE</span>{" "}
+        </h1>
+        <div className="crossbar"></div>
+      </div>
       <themeContext.Provider value={data}>
-        <Header
-          search={Textsearch}
-          Search={handleSearch}
-          statusResult={statusResult}
-          setStatusResult={setStatusResult}
-        />
-        <Banner />
-        <SearchResult result={result} statusResult={statusResult} />
-        <MovieList />
+        <div className="body">
+          <Header
+            search={Textsearch}
+            Search={handleSearch}
+            statusResult={statusResult}
+            setStatusResult={setStatusResult}
+          />
+
+          <Banner />
+          <SearchResult result={result} statusResult={statusResult} />
+          <MovieList />
+        </div>
       </themeContext.Provider>
     </>
   );
